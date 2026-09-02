@@ -1,0 +1,43 @@
+# case_id	repr	sha256	stack_id
+str_plain	'hello'	d543699194a3343443ab84395c0464b018f12e31df1b5e829d65c4440e90b9a5	rule_d5436991
+str_squote	"it's"	e8a14e7df117da8182c2c867aef6f99b3d4a436044f60d375fe7db38695a3777	rule_e8a14e7d
+str_dquote	'say "hi"'	e695823780a59a49cc77cfbcae5291902a53eac8fdcd20bf49f7b7bec4b9f835	rule_e6958237
+str_both	'it\\'s a "test"'	be133335556e3a4d32d0427b2ea44c4baa10cbe7a276f67c10ea65a6831e9952	rule_be133335
+str_backslash	'a\\\\b'	986fe502d4d81158b04f7ccce318ee0e9f9b6ad60785b7d999c0bd084b969964	rule_986fe502
+str_newline	'a\\nb'	34662832ed01812c990f782c660c0c4aeb99a0758037a82a9fee239c1e21e3b5	rule_34662832
+str_tab	'a\\tb'	72cbcbbd8ac30102958efdb17e7c356258a92c51bf9551e411bc353b7d897619	rule_72cbcbbd
+str_cr	'a\\rb'	b462415eb5f15d88935f27f9a6a3f97d214f2440309ec1b612d742bc67f32877	rule_b462415e
+str_nul	'a\\x00b'	047f82efa87f09966193dab0eb480f1d31e96ce7116dd89a85ae4ad4348235c1	rule_047f82ef
+str_bell	'a\\x07b'	e06b3938eb893711639f76ab97c6f1b97af426e7f3639f243ccda537c0028aa3	rule_e06b3938
+str_esc1b	'a\\x1bb'	6f6648e75723d099ea417c587a582bea6228586348553d145bca6e6aab66fba7	rule_6f6648e7
+str_del	'a\\x7fb'	ba0771624b64e6470e93442ce1bbb766ca2de46f2c1df1a4e41f08f37ae06af5	rule_ba077162
+str_nbsp	'a\\xa0b'	eefbb6e123fb5767ca7324a664cbd6d1de8d676e5f3c79e9fb0528aee6933b6d	rule_eefbb6e1
+str_softhyphen	'a\\xadb'	aff28a4560d20d096ea7f5488e29f57f4e0e3dcb7b3ac87f3caf36b67ac0d77a	rule_aff28a45
+str_accent	'café'	77080a53f445ee0552be85b863001af46b4cbbba4683d242d7dfa005638d19e4	rule_77080a53
+str_cjk	'你好'	7ebf4b6e0d303d763e9e59f9926c90908a1421968fb285fc3c717716ba77cbdf	rule_7ebf4b6e
+str_emoji	'😀'	53566ab12cf6ef8d377642fb3834ece6d4f25864c2a6e1ffa16534cabb5b2950	rule_53566ab1
+str_combining	'é'	2bd45aaf0b711972c19a4168596c70deca04a77cc0b617176298cd91fff4d8f7	rule_2bd45aaf
+str_zwsp	'a\\u200bb'	a11a21874a203954d84cb063ffb72fa8c17410ec71e0663363ccda94ef30ede5	rule_a11a2187
+str_linesep	'a\\u2028b'	ca633fee2f09f458192df3bc86dab7e9c2f4e1a4060927ed89f1de1df68759d7	rule_ca633fee
+str_empty	''	6f49cdbd80e1b95d5e6427e1501fc217790daee87055fa5b4e71064288bddede	rule_6f49cdbd
+none	None	dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91	rule_dc937b59
+true	True	3cbc87c7681f34db4617feaa2c8801931bc5e42d8d0f560e756dd4cd92885f18	rule_3cbc87c7
+false	False	60a33e6cf5151f2d52eddae9685cfa270426aa89d8dbc7dfb854606f1d1a40fe	rule_60a33e6c
+int0	0	5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9	rule_5feceb66
+int_neg	-12	7ed00270e394c3e190d18a977f5d0e1ed889bdc03a637e8fe35f00946841b0bf	rule_7ed00270
+list_empty	[]	4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945	rule_4f53cda1
+list_mixed	['a', 1, None, True]	e8fc59b8892857afd420e3f860ce72b83af9a232171ec933c0b5f97a8fe3dedd	rule_e8fc59b8
+tuple_empty	()	2e38e77b22c314a449e91fafed92a43826ac6aa403ae6a8acb6cf58239fbaf5d	rule_2e38e77b
+tuple_one	('a',)	6d901f05646c4418781d4501c47b804c224a6704a571807c78928218d7068a7f	rule_6d901f05
+tuple_one_int	(1,)	28cb03b06c288e88c6a880eeba293bf9c9bb9fa586128586459a486a511f832f	rule_28cb03b0
+tuple_two	('a', {})	baaa891ef0e4b37b9122d36e29cdcac1ced6ca9b82cb3152182c8bf75b7b84df	rule_baaa891e
+tuple_three	('li', {'class': '', 'style': ''}, 0)	04f979142b7932c4d1c2c64c678f4c70b27795108b687237744c0398c888cf92	rule_04f97914
+dict_empty	{}	44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a	rule_44136fa3
+dict_order_cs	{'class': '', 'style': ''}	17c5001a7292c32a77a9375f395838f6c7cf194cfc06593536c671a5b955325f	rule_17c5001a
+dict_order_sc	{'style': '', 'class': ''}	02014a1bc5fd1a7c00fe7d0f86560e86c3d947d87e47b250b80e6ab81db85f9c	rule_02014a1b
+dict_class_list	{'class': ['item', 'x'], 'style': ''}	22e4b0b8ad1529f1ba8d246d456d8de9b4ed073d22f9c0dfb072b1e1a423509e	rule_22e4b0b8
+nested	{'content': [('div', {'class': ['a'], 'style': ''}, 2), ('p', {'class': '', 'style': ''})]}	e638b4396c755a63e60b223686492f6e20e5838770354ec5e514f8dd2719c032	rule_e638b439
+stack_simple_cs	{'content': [('[document]', {'class': '', 'style': ''}, 0), ('html', {'class': '', 'style': ''}, 0), ('body', {'class': '', 'style': ''}, 0), ('ul', {'class': '', 'style': ''}, 0), ('li', {'class': '', 'style': ''})], 'wanted_attr': None, 'is_full_url': False, 'is_non_rec_text': False, 'url': ''}	25edbe880e7f5aa955718de52755dbbf940cd419cc7a740dc5581e4e49a35fcb	rule_25edbe88
+stack_url_cs	{'content': [('[document]', {'class': '', 'style': ''}, 0), ('html', {'class': '', 'style': ''}, 0), ('body', {'class': '', 'style': ''}, 0), ('div', {'class': ['products'], 'style': ''}, 0), ('a', {'class': ['link'], 'style': ''})], 'wanted_attr': 'href', 'is_full_url': True, 'is_non_rec_text': False, 'url': 'https://example.com/index.html'}	87eb2506a144bfd7ab5a6101069f7c45af09747d10514242d235e72e74c2d23c	rule_87eb2506
+stack_simple_sc	{'content': [('[document]', {'style': '', 'class': ''}, 0), ('html', {'style': '', 'class': ''}, 0), ('body', {'style': '', 'class': ''}, 0), ('ul', {'style': '', 'class': ''}, 0), ('li', {'style': '', 'class': ''})], 'wanted_attr': None, 'is_full_url': False, 'is_non_rec_text': False, 'url': ''}	80ae241686b96ffc4224d0139dfb5055233268c777ee58a96eb26a4030360aff	rule_80ae2416
+stack_url_sc	{'content': [('[document]', {'style': '', 'class': ''}, 0), ('html', {'style': '', 'class': ''}, 0), ('body', {'style': '', 'class': ''}, 0), ('div', {'style': '', 'class': ['products']}, 0), ('a', {'style': '', 'class': ['link']})], 'wanted_attr': 'href', 'is_full_url': True, 'is_non_rec_text': False, 'url': 'https://example.com/index.html'}	cb25b4d23e1f056d2b341ae3de53e853ac2fcda846e19e2726a83a85a62c5fc6	rule_cb25b4d2

@@ -1,0 +1,21 @@
+# input	output
+  hello  	hello
+café	café
+café	café
+ＡＢＣ	ABC
+①	1
+ﬁsh	fish
+a b	a b
+\t x \n	x
+	
+   	
+ẛ̣	ṩ
+ご	ご
+Ω	Ω
+Å	Å
+ﾝ	ン
+½	1⁄2
+x​z	x​z
+İ	İ
+ﷺ	صلى الله عليه وسلم
+  é́  	é́

@@ -1,0 +1,1433 @@
+{
+  "fixtures": {
+    "SIMPLE": "<ul><li>Banana</li><li>Apple</li><li>Orange</li></ul>",
+    "DUP": "<ul><li>Banana</li><li>Banana</li></ul>",
+    "COMPLEX_ORDER": "\n<div class='products'>\n  <h2>Banana</h2>\n  <p class='price'>$1</p>\n  <h2>Apple</h2>\n  <p class='price'>$2</p>\n</div>\n",
+    "COMPLEX": "\n<div id=\"main\">\n  <ul class=\"fruits\">\n    <li class=\"item\"><span class=\"name\">Banana</span><a href=\"/banana\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Apple</span><a href=\"/apple\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Orange</span><a href=\"/orange\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Banana</span></li>\n  </ul>\n  <p class=\"info\">Fresh fruits</p>\n  <a class=\"external\" href=\"/shop\">Shop Now</a>\n</div>\n",
+    "PAGE_1": "\n<div id='product'>\n  <h1 class='title'>Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black</h1>\n  <span class='price'>US $349.99</span>\n  <div class='rating'><span class='value'>4.8</span></div>\n  <div class='note'>See details</div>\n</div>\n",
+    "PAGE_2": "\n<div id='product'>\n  <h1 class='title'>Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti</h1>\n  <span class='price'>US $1,229.49</span>\n  <div class='rating'><span class='value'>5.0</span></div>\n  <div class='note'>See details</div>\n</div>\n",
+    "WALMART_1": "<div class='price'>$8.95</div>",
+    "WALMART_2": "<div class='price'>$7.00</div>",
+    "ETSY_1": "<span class='amount'>$12.50+</span>",
+    "ETSY_2": "<span class='amount'>$60.00</span>",
+    "BTN_BASE": "<div><a class=\"btn-primary\" href=\"/item\">Buy</a></div>",
+    "BTN_VARIANT": "<div><a class=\"btn-prime\" href=\"/item\">Buy</a></div>",
+    "BTN_BASE2": "<div><a class='btn-primary-action' href='/buy'>Buy</a></div>",
+    "BTN_VARIANT2": "<div><a class='btn-prim-action' href='/buy'>Buy</a></div>",
+    "ONE_LI": "<ul><li>Banana</li></ul>",
+    "MALFORMED_P": "<div><p>one<p>two</div>",
+    "MALFORMED_TABLE": "<table><tr><td>cell</td></tr></table>",
+    "MALFORMED_UNCLOSED": "<div><span>a<div>b</div>",
+    "COMMENT": "<div><!-- note --><span>x</span></div>",
+    "MULTI_CLASS": "<div><span class='a b  c'>hit</span></div>",
+    "ENTITY": "<div><span>caf&eacute; &amp; bar</span></div>",
+    "NESTED_SAME": "<div><div><div>deep</div></div></div>",
+    "STYLE_ATTR": "<div><span style='color:red' class='x'>styled</span></div>",
+    "EMPTY_CLASS": "<div><span class=''>ec</span></div>",
+    "SRC_ATTR": "<div><img src='/img/a.png'/></div>"
+  },
+  "scenarios": [
+    {
+      "name": "build_requires_targets",
+      "ok": true,
+      "value": {
+        "error": "ValueError",
+        "message": "No targets were supplied"
+      }
+    },
+    {
+      "name": "build_and_get_result_similar",
+      "ok": true,
+      "value": {
+        "built": [
+          "Banana"
+        ],
+        "rules": [
+          {
+            "stack_id": "rule_81c805bb",
+            "hash": "81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "li",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "similar_csl": [
+          "Banana",
+          "Apple",
+          "Orange"
+        ],
+        "similar_plain": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "get_result_exact_order",
+      "ok": true,
+      "value": {
+        "built": [
+          "Banana",
+          "$2"
+        ],
+        "rules": [
+          {
+            "stack_id": "rule_2108fa6f",
+            "hash": "2108fa6ff6e315a6f5a86bb61ec529f6e62650b656b9fc1974417009bbc29bb0",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "class": [
+                    "products"
+                  ],
+                  "style": ""
+                },
+                0
+              ],
+              [
+                "h2",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          },
+          {
+            "stack_id": "rule_9d6e035c",
+            "hash": "9d6e035c03ef83cd89f2e445e29dbb090c1c28eb608cb59a7b0b74924d7584a3",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "class": [
+                    "products"
+                  ],
+                  "style": ""
+                },
+                1
+              ],
+              [
+                "p",
+                {
+                  "class": [
+                    "price"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "Banana",
+          "$2"
+        ]
+      }
+    },
+    {
+      "name": "group_by_alias",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_81c805bb",
+            "hash": "81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312",
+            "alias": "fruit",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "li",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "similar": {
+          "fruit": [
+            "Banana",
+            "Apple",
+            "Orange"
+          ]
+        }
+      }
+    },
+    {
+      "name": "save_and_load",
+      "ok": true,
+      "value": {
+        "json": "{\"stack_list\": [{\"content\": [[\"[document]\", {\"style\": \"\", \"class\": \"\"}, 0], [\"html\", {\"style\": \"\", \"class\": \"\"}, 0], [\"body\", {\"style\": \"\", \"class\": \"\"}, 0], [\"ul\", {\"style\": \"\", \"class\": \"\"}, 0], [\"li\", {\"style\": \"\", \"class\": \"\"}]], \"wanted_attr\": null, \"is_full_url\": null, \"is_non_rec_text\": null, \"url\": \"\", \"hash\": \"81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312\", \"stack_id\": \"rule_81c805bb\", \"alias\": \"\"}]}",
+        "exact_orig": [
+          "Banana"
+        ],
+        "exact_loaded": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "keep_rules",
+      "ok": true,
+      "value": {
+        "first": "rule_81c805bb",
+        "second": "rule_023890ff",
+        "remaining": [
+          "rule_023890ff"
+        ]
+      }
+    },
+    {
+      "name": "get_result_combined",
+      "ok": true,
+      "value": {
+        "similar": [
+          "Banana"
+        ],
+        "exact": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "text_fuzz_ratio_partial",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "set_rule_aliases",
+      "ok": true,
+      "value": {
+        "rule_id": "rule_81c805bb",
+        "result": {
+          "fruit": [
+            "Banana",
+            "Apple",
+            "Orange"
+          ]
+        }
+      }
+    },
+    {
+      "name": "grouped_results_by_rule",
+      "ok": true,
+      "value": {
+        "rule_id": "rule_81c805bb",
+        "result": {
+          "rule_81c805bb": [
+            "Banana",
+            "Apple",
+            "Orange"
+          ]
+        }
+      }
+    },
+    {
+      "name": "similar_unique_false",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_81c805bb",
+            "hash": "81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "li",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "unique_false": [
+          "Banana"
+        ],
+        "unique_false_csl": [
+          "Banana",
+          "Banana"
+        ],
+        "unique_true": [
+          "Banana"
+        ],
+        "default": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "similar_keep_order",
+      "ok": true,
+      "value": [
+        "Banana",
+        "Apple",
+        "Orange"
+      ]
+    },
+    {
+      "name": "extract_relative_link",
+      "ok": true,
+      "value": {
+        "built": [
+          "https://example.com/banana",
+          "https://example.com/apple",
+          "https://example.com/orange"
+        ],
+        "rules": [
+          {
+            "stack_id": "rule_8589e783",
+            "hash": "8589e783532e4426accd9f93b73ffa75ea9070bdd6bbd021d2d83e4d0e578322",
+            "alias": "",
+            "wanted_attr": "href",
+            "is_full_url": true,
+            "is_non_rec_text": null,
+            "url": "https://example.com/index.html",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "class": [
+                    "fruits"
+                  ],
+                  "style": ""
+                },
+                1
+              ],
+              [
+                "li",
+                {
+                  "class": [
+                    "item"
+                  ],
+                  "style": ""
+                },
+                0
+              ],
+              [
+                "a",
+                {
+                  "class": [
+                    "link"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "similar": [
+          "https://example.com/banana",
+          "https://example.com/apple",
+          "https://example.com/orange"
+        ],
+        "exact": [
+          "https://example.com/apple"
+        ]
+      }
+    },
+    {
+      "name": "build_with_regex",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_225a07a5",
+            "hash": "225a07a56a2b6f165fb8bac296d26747c614c35bd1a1c566a49042abc6fa40ae",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "class": [
+                    "fruits"
+                  ],
+                  "style": ""
+                },
+                3
+              ],
+              [
+                "li",
+                {
+                  "class": [
+                    "item"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          },
+          {
+            "stack_id": "rule_bffb9bca",
+            "hash": "bffb9bca6646aa48bd9c67a6843f7103329da82c3c9f94a8b6dae80760a8b579",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "class": [
+                    "fruits"
+                  ],
+                  "style": ""
+                },
+                0
+              ],
+              [
+                "li",
+                {
+                  "class": [
+                    "item"
+                  ],
+                  "style": ""
+                },
+                0
+              ],
+              [
+                "span",
+                {
+                  "class": [
+                    "name"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          },
+          {
+            "stack_id": "rule_7829f4de",
+            "hash": "7829f4de43ffb41d42c37c09dbb060af0a2136da9104b4477b418e98bad535aa",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "ul",
+                {
+                  "class": [
+                    "fruits"
+                  ],
+                  "style": ""
+                },
+                0
+              ],
+              [
+                "li",
+                {
+                  "class": [
+                    "item"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "Banana",
+          "BananaMore"
+        ]
+      }
+    },
+    {
+      "name": "update_appends_rules",
+      "ok": true,
+      "value": {
+        "count_after_first": 2,
+        "count_after_update": 3
+      }
+    },
+    {
+      "name": "remove_rules",
+      "ok": true,
+      "value": {
+        "before": [
+          "rule_225a07a5",
+          "rule_bffb9bca",
+          "rule_af0f0e2e"
+        ],
+        "after": [
+          "rule_bffb9bca",
+          "rule_af0f0e2e"
+        ]
+      }
+    },
+    {
+      "name": "keep_blank_returns_empty",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_7ba42639",
+            "hash": "7ba42639ad9e2b874469514643a0dd61c1f52c9d3bf7863ae46be86e0c958c78",
+            "alias": "",
+            "wanted_attr": "href",
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "a",
+                {
+                  "class": [
+                    "external"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact_keep_blank": [
+          ""
+        ],
+        "exact_no_keep_blank": []
+      }
+    },
+    {
+      "name": "attr_fuzz_ratio",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "fuzz_08": [
+          "Buy"
+        ],
+        "fuzz_10": [
+          "Buy"
+        ]
+      }
+    },
+    {
+      "name": "grouping_and_rule_removal",
+      "ok": true,
+      "value": {
+        "grouped": {
+          "rule_b41b35f0": [
+            "Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti"
+          ],
+          "rule_d05f1e60": [
+            "US $1,229.49"
+          ],
+          "rule_caa29327": [
+            "5.0"
+          ],
+          "rule_d0db44ac": [
+            "See details"
+          ]
+        },
+        "unwanted": [
+          "rule_d0db44ac"
+        ],
+        "result": [
+          "Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti",
+          "US $1,229.49",
+          "5.0"
+        ]
+      }
+    },
+    {
+      "name": "incremental_learning_multiple_sites",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_d05f1e60",
+            "hash": "d05f1e60eaa74a4d70290abc2110041fa39250dacb662b38e51fa5163ad30949",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "span",
+                {
+                  "class": [
+                    "price"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          },
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "page2": [
+          "US $1,229.49",
+          "Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti\nUS $1,229.49\n5.0\nSee details"
+        ],
+        "walmart2": [
+          "$7.00"
+        ],
+        "etsy2": [
+          "$60.00"
+        ]
+      }
+    },
+    {
+      "name": "attr_fuzz_ratio_realistic",
+      "ok": true,
+      "value": [
+        "Buy"
+      ]
+    },
+    {
+      "name": "regex_name_extraction",
+      "ok": true,
+      "value": [
+        "Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black"
+      ]
+    },
+    {
+      "name": "keep_blank_for_missing_rating",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_caa29327",
+            "hash": "caa2932702b61ecbf11bd9f8e0272090329a3026a334c37ebd047c8761391ebf",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "class": [
+                    "rating"
+                  ],
+                  "style": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "result": [
+          ""
+        ]
+      }
+    },
+    {
+      "name": "quirk_wanted_list_overrides_dict",
+      "ok": true,
+      "value": {
+        "built": [
+          "Banana"
+        ],
+        "aliases": [
+          ""
+        ]
+      }
+    },
+    {
+      "name": "quirk_alias_not_in_hash",
+      "ok": true,
+      "value": {
+        "no_alias_hash": "81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312",
+        "with_alias_hash": "81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312",
+        "equal": true
+      }
+    },
+    {
+      "name": "quirk_unique_tristate",
+      "ok": true,
+      "value": {
+        "grouped_unique_none": {
+          "rule_81c805bb": [
+            "Banana",
+            "Apple",
+            "Orange"
+          ]
+        },
+        "grouped_unique_true": {
+          "rule_81c805bb": [
+            "Banana",
+            "Apple",
+            "Orange"
+          ]
+        },
+        "ungrouped_unique_none": [
+          "Banana",
+          "Apple",
+          "Orange"
+        ]
+      }
+    },
+    {
+      "name": "quirk_url_leak_across_rules",
+      "ok": true,
+      "value": {
+        "rule_urls": [
+          "https://example.com/index.html",
+          ""
+        ],
+        "exact_no_url": [
+          "https://example.com/apple",
+          "Fresh fruits"
+        ]
+      }
+    },
+    {
+      "name": "quirk_non_rec_text",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_3ff3617f",
+            "hash": "3ff3617f1b3422fee68ddd56d19bd525cfec551bd8f901b7e4ca146b4e360419",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": true,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "span",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "outer"
+        ]
+      }
+    },
+    {
+      "name": "quirk_multi_valued_class",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "hit"
+        ]
+      }
+    },
+    {
+      "name": "quirk_style_attr",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "styled"
+        ]
+      }
+    },
+    {
+      "name": "quirk_src_full_url",
+      "ok": true,
+      "value": {
+        "built": [
+          "https://example.com/img/a.png"
+        ],
+        "rules": [
+          {
+            "stack_id": "rule_333b9105",
+            "hash": "333b9105e35c58cf197310796f9fe4816c9f64e5596ab5a9c29989e04cdf8f01",
+            "alias": "",
+            "wanted_attr": "src",
+            "is_full_url": true,
+            "is_non_rec_text": null,
+            "url": "https://example.com/page/index.html",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "body",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "div",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "img",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "quirk_entity_unescape",
+      "ok": true,
+      "value": {
+        "rules": [
+          {
+            "stack_id": "rule_65f0591b",
+            "hash": "65f0591b90a6f6c532ae4a726afbc01a908ea353e466e109cb9b3fb1852d00ac",
+            "alias": "",
+            "wanted_attr": null,
+            "is_full_url": null,
+            "is_non_rec_text": null,
+            "url": "",
+            "content": [
+              [
+                "[document]",
+                {
+                  "style": "",
+                  "class": ""
+                },
+                0
+              ],
+              [
+                "html",
+                {
+                  "style": "",
+                  "class": ""
+                }
+              ]
+            ]
+          }
+        ],
+        "exact": [
+          "café & bar"
+        ]
+      }
+    },
+    {
+      "name": "quirk_load_legacy_list",
+      "ok": true,
+      "value": {
+        "legacy_json": "[{\"content\": [[\"[document]\", {\"style\": \"\", \"class\": \"\"}, 0], [\"html\", {\"style\": \"\", \"class\": \"\"}, 0], [\"body\", {\"style\": \"\", \"class\": \"\"}, 0], [\"ul\", {\"style\": \"\", \"class\": \"\"}, 0], [\"li\", {\"style\": \"\", \"class\": \"\"}]], \"wanted_attr\": null, \"is_full_url\": null, \"is_non_rec_text\": null, \"url\": \"\", \"hash\": \"81c805bbbc785fbb2633dbce4b7f662a94a8b27391606711afc780847e1cb312\", \"stack_id\": \"rule_81c805bb\", \"alias\": \"\"}]",
+        "exact": [
+          "Banana"
+        ]
+      }
+    },
+    {
+      "name": "quirk_empty_html_falls_through",
+      "ok": true,
+      "value": {
+        "error": "ValueError",
+        "message": "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?"
+      }
+    },
+    {
+      "name": "quirk_set_rule_aliases_unknown",
+      "ok": true,
+      "value": {
+        "error": "KeyError",
+        "message": "'rule_deadbeef'"
+      }
+    },
+    {
+      "name": "request_headers_user_agent",
+      "ok": true,
+      "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36             (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
+    }
+  ],
+  "meta": {
+    "python": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "note": "generated with real bs4 4.12.3 + lxml; PYTHONHASHSEED controls class/style filler order, see PORTING-NOTES.md"
+  }
+}

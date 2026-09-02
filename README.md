@@ -1,150 +1,234 @@
-# AutoScraper: A Smart, Automatic, Fast and Lightweight Web Scraper for Python
+# AutoScraper for Java
 
-![img](https://user-images.githubusercontent.com/17881612/91968083-5ee92080-ed29-11ea-82ec-d99ec85367a5.png)
+A Java 17 port of [autoscraper](https://github.com/alirezamika/autoscraper) — smart, automatic,
+fast and lightweight web scraping.
 
-This project is made for automatic web scraping to make scraping easy. 
-It gets a url or the html content of a web page and a list of sample data which we want to scrape from that page. **This data can be text, url or any html tag value of that page.** It learns the scraping rules and returns the similar elements. Then you can use this learned object with new urls to get similar content or the exact same element of those new pages.
+You do not write selectors. You give it a page and some example values you want from it, and it
+learns the rules to extract them. Point it at a similar page afterwards and it finds the
+equivalent data.
 
+This is a faithful port: rule ids, saved model files and extraction results are identical to the
+Python original's. See [PORTING-NOTES.md](PORTING-NOTES.md) for what that involved.
 
-## Installation
+---
 
-It's compatible with python 3.
+## Install
 
-- Install latest version from git repository using pip:
+```xml
+<dependency>
+    <groupId>io.github.autoscraper</groupId>
+    <artifactId>autoscraper</artifactId>
+    <version>1.1.14</version>
+</dependency>
+```
+
+Requires Java 17 or newer.
+
+---
+
+## Getting similar results
+
+Say you want all the related post titles on a Stack Overflow page:
+
+```java
+import io.github.autoscraper.AutoScraper;
+import io.github.autoscraper.options.BuildOptions;
+
+AutoScraper scraper = new AutoScraper();
+
+List<String> result = scraper.build(BuildOptions.builder()
+        .url("https://stackoverflow.com/questions/2081586/web-scraping-with-python")
+        .wantedList("What are metaclasses in Python?")
+        .build());
+```
+
+Give it **one** example. The result contains every value the learned rules matched:
+
+```
+['How do I merge two dictionaries in a single expression in Python (taking union of dictionaries)?',
+ 'How to call an external command?',
+ 'What are metaclasses in Python?',
+ ...]
+```
+
+Now run the same rules against a different page:
+
+```java
+import io.github.autoscraper.options.SimilarOptions;
+
+scraper.getResultSimilar(SimilarOptions.builder()
+        .url("https://stackoverflow.com/questions/606191/convert-bytes-to-a-string")
+        .build())
+        .asList();
+```
+
+> **Note.** Fetching by URL requires the JVM flag `-Djdk.httpclient.allowRestrictedHeaders=host`,
+> because the scraper sends an explicit `Host` header. Passing `.html(...)` instead needs no flag.
+
+---
+
+## Getting exact results
+
+To pull a specific value from the same position on many pages — a live price, say:
+
+```java
+AutoScraper scraper = new AutoScraper();
+
+scraper.build(BuildOptions.builder()
+        .url("https://finance.yahoo.com/quote/AAPL/")
+        .wantedList("124.81")
+        .build());
+
+// Reuse on any other ticker
+scraper.getResultExact(ExactOptions.builder()
+        .url("https://finance.yahoo.com/quote/MSFT/")
+        .build())
+        .asList();
+```
+
+`getResultExact` follows the learned path by position and returns at most one value per rule.
+`getResultSimilar` explores every branch and returns everything that matches.
+
+---
+
+## Multiple targets, grouped by name
+
+Use aliases when you want several fields at once:
+
+```java
+import io.github.autoscraper.match.TextTarget;
+
+scraper.build(BuildOptions.builder()
+        .url("https://example.com/product")
+        .wanted("title", List.of(new TextTarget.Literal("Acer Laptop")))
+        .wanted("price", List.of(new TextTarget.Literal("US $1,229.49")))
+        .build());
+
+Map<String, List<String>> byField = scraper.getResultSimilar(SimilarOptions.builder()
+        .html(html)
+        .groupByAlias(true)
+        .build())
+        .asMap();
+// {"title": [...], "price": [...]}
+```
+
+To inspect which rule produced what, group by rule id instead:
+
+```java
+scraper.getResultSimilar(SimilarOptions.builder().html(html).grouped(true).build()).asMap();
+// {"rule_424f7105": [...], "rule_b3db34a9": [...]}
+```
+
+Then keep only the rules you trust:
+
+```java
+scraper.keepRules(List.of("rule_424f7105", "rule_b3db34a9"));
+scraper.removeRules(List.of("rule_810cdd85"));
+scraper.setRuleAliases(Map.of("rule_424f7105", "title"));
+```
+
+---
+
+## Regular expressions and fuzzy matching
+
+Match a target by pattern rather than by literal text:
+
+```java
+scraper.build(BuildOptions.builder()
+        .html(html)
+        .wantedTargets(List.of(new TextTarget.Regex(Pattern.compile("Sony PlayStation.*"))))
+        .build());
+```
+
+When a page's text or attributes drift slightly between visits, relax the thresholds:
+
+```java
+// Tolerate small differences in the target text while learning
+.textFuzzRatio(0.8)
+
+// Tolerate small differences in class/style attributes while extracting
+.attrFuzzRatio(0.8)
+```
+
+Both use Python's `difflib` similarity ratio, ported exactly, so thresholds transfer over
+unchanged from existing Python code.
+
+---
+
+## Saving and loading models
+
+```java
+scraper.save(Path.of("model.json"));
+
+AutoScraper loaded = new AutoScraper();
+loaded.load(Path.of("model.json"));
+```
+
+The file format is **byte-compatible with the Python version** — models are interchangeable in
+both directions. Files written by very old releases, which stored a bare JSON array, also load.
+
+---
+
+## Result options
+
+| Option | Default | Effect |
+| --- | --- | --- |
+| `unique(Boolean)` | unset | Deduplicate. Unset means *on* for flat results, *off* for grouped ones. |
+| `keepOrder(boolean)` | `false` | Return values in document order. |
+| `keepBlank(boolean)` | `false` | Keep empty and missing values instead of dropping them. |
+| `containSiblingLeaves(boolean)` | `false` | Return all matching siblings at the final step, not just one. |
+| `grouped(boolean)` | `false` | Group results by rule id. |
+| `groupByAlias(boolean)` | `false` | Group results by alias. |
+| `attrFuzzRatio(double)` | `1.0` | Attribute similarity threshold. |
+
+`getResult(ResultOptions)` returns both result kinds at once as a `ResultPair`, parsing the page
+only once.
+
+---
+
+## Custom request settings
+
+```java
+import io.github.autoscraper.options.RequestArgs;
+
+RequestArgs args = new RequestArgs()
+        .header("Cookie", "session=abc123")
+        .timeout(Duration.ofSeconds(10));
+
+scraper.build(BuildOptions.builder().url(url).wantedList("...").requestArgs(args).build());
+```
+
+Default headers live in the mutable static `AutoScraper.REQUEST_HEADERS`.
+
+> Matching the original, a `RequestArgs` instance is **consumed** by the request — its headers are
+> removed as they are applied. Call `args.copy()` to reuse one.
+
+---
+
+## Differences from the Python version
+
+Fully catalogued in [PORTING-NOTES.md](PORTING-NOTES.md). In brief:
+
+- Java throws `IllegalArgumentException` where Python throws `ValueError` or `KeyError`; the
+  messages are identical.
+- Rule ids are deterministic here. In Python they depend on `PYTHONHASHSEED` and can differ
+  between runs; this port always uses the `class, style` ordering.
+- One upstream test asserts behaviour that only holds under the stubbed parser in its own test
+  suite. This port matches real BeautifulSoup instead.
+
+---
+
+## Building
+
 ```bash
-$ pip install git+https://github.com/alirezamika/autoscraper.git
+mvn verify
 ```
 
-- Install from PyPI:
-```bash
-$ pip install autoscraper
-```
+Runs 72 tests, including 36 end-to-end scenarios and roughly 900 golden fixtures recorded from the
+running Python package.
 
-- Install from source:
-```bash
-$ python setup.py install
-```
+---
 
-## How to use
+## License
 
-### Getting similar results
-
-Say we want to fetch all related post titles in a stackoverflow page:
-
-```python
-from autoscraper import AutoScraper
-
-url = 'https://stackoverflow.com/questions/2081586/web-scraping-with-python'
-
-# We can add one or multiple candidates here.
-# You can also put urls here to retrieve urls.
-wanted_list = ["What are metaclasses in Python?"]
-
-scraper = AutoScraper()
-result = scraper.build(url, wanted_list)
-print(result)
-```
-
-Here's the output:
-```python
-[
-    'How do I merge two dictionaries in a single expression in Python (taking union of dictionaries)?', 
-    'How to call an external command?', 
-    'What are metaclasses in Python?', 
-    'Does Python have a ternary conditional operator?', 
-    'How do you remove duplicates from a list whilst preserving order?', 
-    'Convert bytes to a string', 
-    'How to get line count of a large file cheaply in Python?', 
-    "Does Python have a string 'contains' substring method?", 
-    'Why is “1000000000000000 in range(1000000000000001)” so fast in Python 3?'
-]
-```
-Now you can use the `scraper` object to get related topics of any stackoverflow page:
-```python
-scraper.get_result_similar('https://stackoverflow.com/questions/606191/convert-bytes-to-a-string')
-```
-
-### Getting exact result
-
-Say we want to scrape live stock prices from yahoo finance:
-
-```python
-from autoscraper import AutoScraper
-
-url = 'https://finance.yahoo.com/quote/AAPL/'
-
-wanted_list = ["124.81"]
-
-scraper = AutoScraper()
-
-# Here we can also pass html content via the html parameter instead of the url (html=html_content)
-result = scraper.build(url, wanted_list)
-print(result)
-```
-Note that you should update the `wanted_list` if you want to copy this code, as the content of the page dynamically changes.
-
-You can also pass any custom `requests` module parameter. for example you may want to use proxies or custom headers:
-
-```python
-proxies = {
-    "http": 'http://127.0.0.1:8001',
-    "https": 'https://127.0.0.1:8001',
-}
-
-result = scraper.build(url, wanted_list, request_args=dict(proxies=proxies))
-```
-
-Now we can get the price of any symbol:
-
-```python
-scraper.get_result_exact('https://finance.yahoo.com/quote/MSFT/')
-```
-
-**You may want to get other info as well.** For example if you want to get market cap too, you can just append it to the wanted list. By using the `get_result_exact` method, it will retrieve the data as the same exact order in the wanted list.
-
-**Another example:** Say we want to scrape the about text, number of stars and the link to issues of Github repo pages:
-
-```python
-from autoscraper import AutoScraper
-
-url = 'https://github.com/alirezamika/autoscraper'
-
-wanted_list = ['A Smart, Automatic, Fast and Lightweight Web Scraper for Python', '6.2k', 'https://github.com/alirezamika/autoscraper/issues']
-
-scraper = AutoScraper()
-scraper.build(url, wanted_list)
-```
-
-Simple, right?
-
-
-### Saving the model
-
-We can now save the built model to use it later. To save:
-
-```python
-# Give it a file path
-scraper.save('yahoo-finance')
-```
-
-And to load:
-
-```python
-scraper.load('yahoo-finance')
-```
-
-## Tutorials
- 
-- See [this gist](https://gist.github.com/alirezamika/72083221891eecd991bbc0a2a2467673) for more advanced usages.
-- [AutoScraper and Flask: Create an API From Any Website in Less Than 5 Minutes](https://medium.com/better-programming/autoscraper-and-flask-create-an-api-from-any-website-in-less-than-5-minutes-3f0f176fc4a3)
-
-## Issues
-Feel free to open an issue if you have any problem using the module.
-
-
-## Support the project
-
-<a href="https://www.buymeacoffee.com/alirezam" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-black.png" alt="Buy Me A Coffee" height="45" width="163" ></a>
-
-
-#### Happy Coding  ♥️
+MIT, as the original. See [LICENSE](LICENSE).

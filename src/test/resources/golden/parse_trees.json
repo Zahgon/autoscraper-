@@ -1,0 +1,1618 @@
+{
+  "SIMPLE": {
+    "raw": "<ul><li>Banana</li><li>Apple</li><li>Orange</li></ul>",
+    "normalized": "<ul><li>Banana</li><li>Apple</li><li>Orange</li></ul>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "BananaAppleOrange",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "BananaAppleOrange",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "BananaAppleOrange",
+              "children": [
+                {
+                  "name": "ul",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "BananaAppleOrange",
+                  "children": [
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Banana",
+                      "get_text": "Banana",
+                      "children": []
+                    },
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Apple",
+                      "get_text": "Apple",
+                      "children": []
+                    },
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Orange",
+                      "get_text": "Orange",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "ul",
+      "li",
+      "li",
+      "li"
+    ]
+  },
+  "DUP": {
+    "raw": "<ul><li>Banana</li><li>Banana</li></ul>",
+    "normalized": "<ul><li>Banana</li><li>Banana</li></ul>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "BananaBanana",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "BananaBanana",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "BananaBanana",
+              "children": [
+                {
+                  "name": "ul",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "BananaBanana",
+                  "children": [
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Banana",
+                      "get_text": "Banana",
+                      "children": []
+                    },
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Banana",
+                      "get_text": "Banana",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "ul",
+      "li",
+      "li"
+    ]
+  },
+  "COMPLEX_ORDER": {
+    "raw": "\n<div class='products'>\n  <h2>Banana</h2>\n  <p class='price'>$1</p>\n  <h2>Apple</h2>\n  <p class='price'>$2</p>\n</div>\n",
+    "normalized": "<div class='products'>\n  <h2>Banana</h2>\n  <p class='price'>$1</p>\n  <h2>Apple</h2>\n  <p class='price'>$2</p>\n</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "\nBanana\n$1\nApple\n$2\n",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "\nBanana\n$1\nApple\n$2\n",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "\nBanana\n$1\nApple\n$2\n",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "class": [
+                      "products"
+                    ]
+                  },
+                  "text_direct": "\n\n\n\n\n",
+                  "get_text": "\nBanana\n$1\nApple\n$2\n",
+                  "children": [
+                    {
+                      "name": "h2",
+                      "attrs": {},
+                      "text_direct": "Banana",
+                      "get_text": "Banana",
+                      "children": []
+                    },
+                    {
+                      "name": "p",
+                      "attrs": {
+                        "class": [
+                          "price"
+                        ]
+                      },
+                      "text_direct": "$1",
+                      "get_text": "$1",
+                      "children": []
+                    },
+                    {
+                      "name": "h2",
+                      "attrs": {},
+                      "text_direct": "Apple",
+                      "get_text": "Apple",
+                      "children": []
+                    },
+                    {
+                      "name": "p",
+                      "attrs": {
+                        "class": [
+                          "price"
+                        ]
+                      },
+                      "text_direct": "$2",
+                      "get_text": "$2",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "h2",
+      "p",
+      "h2",
+      "p"
+    ]
+  },
+  "COMPLEX": {
+    "raw": "\n<div id=\"main\">\n  <ul class=\"fruits\">\n    <li class=\"item\"><span class=\"name\">Banana</span><a href=\"/banana\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Apple</span><a href=\"/apple\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Orange</span><a href=\"/orange\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Banana</span></li>\n  </ul>\n  <p class=\"info\">Fresh fruits</p>\n  <a class=\"external\" href=\"/shop\">Shop Now</a>\n</div>\n",
+    "normalized": "<div id=\"main\">\n  <ul class=\"fruits\">\n    <li class=\"item\"><span class=\"name\">Banana</span><a href=\"/banana\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Apple</span><a href=\"/apple\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Orange</span><a href=\"/orange\" class=\"link\">More</a></li>\n    <li class=\"item\"><span class=\"name\">Banana</span></li>\n  </ul>\n  <p class=\"info\">Fresh fruits</p>\n  <a class=\"external\" href=\"/shop\">Shop Now</a>\n</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "\n\nBananaMore\nAppleMore\nOrangeMore\nBanana\n\nFresh fruits\nShop Now\n",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "\n\nBananaMore\nAppleMore\nOrangeMore\nBanana\n\nFresh fruits\nShop Now\n",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "\n\nBananaMore\nAppleMore\nOrangeMore\nBanana\n\nFresh fruits\nShop Now\n",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "id": "main"
+                  },
+                  "text_direct": "\n\n\n\n",
+                  "get_text": "\n\nBananaMore\nAppleMore\nOrangeMore\nBanana\n\nFresh fruits\nShop Now\n",
+                  "children": [
+                    {
+                      "name": "ul",
+                      "attrs": {
+                        "class": [
+                          "fruits"
+                        ]
+                      },
+                      "text_direct": "\n\n\n\n\n",
+                      "get_text": "\nBananaMore\nAppleMore\nOrangeMore\nBanana\n",
+                      "children": [
+                        {
+                          "name": "li",
+                          "attrs": {
+                            "class": [
+                              "item"
+                            ]
+                          },
+                          "text_direct": "",
+                          "get_text": "BananaMore",
+                          "children": [
+                            {
+                              "name": "span",
+                              "attrs": {
+                                "class": [
+                                  "name"
+                                ]
+                              },
+                              "text_direct": "Banana",
+                              "get_text": "Banana",
+                              "children": []
+                            },
+                            {
+                              "name": "a",
+                              "attrs": {
+                                "href": "/banana",
+                                "class": [
+                                  "link"
+                                ]
+                              },
+                              "text_direct": "More",
+                              "get_text": "More",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "li",
+                          "attrs": {
+                            "class": [
+                              "item"
+                            ]
+                          },
+                          "text_direct": "",
+                          "get_text": "AppleMore",
+                          "children": [
+                            {
+                              "name": "span",
+                              "attrs": {
+                                "class": [
+                                  "name"
+                                ]
+                              },
+                              "text_direct": "Apple",
+                              "get_text": "Apple",
+                              "children": []
+                            },
+                            {
+                              "name": "a",
+                              "attrs": {
+                                "href": "/apple",
+                                "class": [
+                                  "link"
+                                ]
+                              },
+                              "text_direct": "More",
+                              "get_text": "More",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "li",
+                          "attrs": {
+                            "class": [
+                              "item"
+                            ]
+                          },
+                          "text_direct": "",
+                          "get_text": "OrangeMore",
+                          "children": [
+                            {
+                              "name": "span",
+                              "attrs": {
+                                "class": [
+                                  "name"
+                                ]
+                              },
+                              "text_direct": "Orange",
+                              "get_text": "Orange",
+                              "children": []
+                            },
+                            {
+                              "name": "a",
+                              "attrs": {
+                                "href": "/orange",
+                                "class": [
+                                  "link"
+                                ]
+                              },
+                              "text_direct": "More",
+                              "get_text": "More",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "li",
+                          "attrs": {
+                            "class": [
+                              "item"
+                            ]
+                          },
+                          "text_direct": "",
+                          "get_text": "Banana",
+                          "children": [
+                            {
+                              "name": "span",
+                              "attrs": {
+                                "class": [
+                                  "name"
+                                ]
+                              },
+                              "text_direct": "Banana",
+                              "get_text": "Banana",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "p",
+                      "attrs": {
+                        "class": [
+                          "info"
+                        ]
+                      },
+                      "text_direct": "Fresh fruits",
+                      "get_text": "Fresh fruits",
+                      "children": []
+                    },
+                    {
+                      "name": "a",
+                      "attrs": {
+                        "class": [
+                          "external"
+                        ],
+                        "href": "/shop"
+                      },
+                      "text_direct": "Shop Now",
+                      "get_text": "Shop Now",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "ul",
+      "li",
+      "span",
+      "a",
+      "li",
+      "span",
+      "a",
+      "li",
+      "span",
+      "a",
+      "li",
+      "span",
+      "p",
+      "a"
+    ]
+  },
+  "PAGE_1": {
+    "raw": "\n<div id='product'>\n  <h1 class='title'>Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black</h1>\n  <span class='price'>US $349.99</span>\n  <div class='rating'><span class='value'>4.8</span></div>\n  <div class='note'>See details</div>\n</div>\n",
+    "normalized": "<div id='product'>\n  <h1 class='title'>Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black</h1>\n  <span class='price'>US $349.99</span>\n  <div class='rating'><span class='value'>4.8</span></div>\n  <div class='note'>See details</div>\n</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "\nSony PlayStation 4 PS4 Pro 1TB 4K Console - Black\nUS $349.99\n4.8\nSee details\n",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "\nSony PlayStation 4 PS4 Pro 1TB 4K Console - Black\nUS $349.99\n4.8\nSee details\n",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "\nSony PlayStation 4 PS4 Pro 1TB 4K Console - Black\nUS $349.99\n4.8\nSee details\n",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "id": "product"
+                  },
+                  "text_direct": "\n\n\n\n\n",
+                  "get_text": "\nSony PlayStation 4 PS4 Pro 1TB 4K Console - Black\nUS $349.99\n4.8\nSee details\n",
+                  "children": [
+                    {
+                      "name": "h1",
+                      "attrs": {
+                        "class": [
+                          "title"
+                        ]
+                      },
+                      "text_direct": "Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black",
+                      "get_text": "Sony PlayStation 4 PS4 Pro 1TB 4K Console - Black",
+                      "children": []
+                    },
+                    {
+                      "name": "span",
+                      "attrs": {
+                        "class": [
+                          "price"
+                        ]
+                      },
+                      "text_direct": "US $349.99",
+                      "get_text": "US $349.99",
+                      "children": []
+                    },
+                    {
+                      "name": "div",
+                      "attrs": {
+                        "class": [
+                          "rating"
+                        ]
+                      },
+                      "text_direct": "",
+                      "get_text": "4.8",
+                      "children": [
+                        {
+                          "name": "span",
+                          "attrs": {
+                            "class": [
+                              "value"
+                            ]
+                          },
+                          "text_direct": "4.8",
+                          "get_text": "4.8",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "div",
+                      "attrs": {
+                        "class": [
+                          "note"
+                        ]
+                      },
+                      "text_direct": "See details",
+                      "get_text": "See details",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "h1",
+      "span",
+      "div",
+      "span",
+      "div"
+    ]
+  },
+  "PAGE_2": {
+    "raw": "\n<div id='product'>\n  <h1 class='title'>Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti</h1>\n  <span class='price'>US $1,229.49</span>\n  <div class='rating'><span class='value'>5.0</span></div>\n  <div class='note'>See details</div>\n</div>\n",
+    "normalized": "<div id='product'>\n  <h1 class='title'>Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti</h1>\n  <span class='price'>US $1,229.49</span>\n  <div class='rating'><span class='value'>5.0</span></div>\n  <div class='note'>See details</div>\n</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "\nAcer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti\nUS $1,229.49\n5.0\nSee details\n",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "\nAcer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti\nUS $1,229.49\n5.0\nSee details\n",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "\nAcer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti\nUS $1,229.49\n5.0\nSee details\n",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "id": "product"
+                  },
+                  "text_direct": "\n\n\n\n\n",
+                  "get_text": "\nAcer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti\nUS $1,229.49\n5.0\nSee details\n",
+                  "children": [
+                    {
+                      "name": "h1",
+                      "attrs": {
+                        "class": [
+                          "title"
+                        ]
+                      },
+                      "text_direct": "Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti",
+                      "get_text": "Acer Predator Helios 300 15.6'' 144Hz FHD Laptop i7-9750H 16GB 512GB GTX 1660 Ti",
+                      "children": []
+                    },
+                    {
+                      "name": "span",
+                      "attrs": {
+                        "class": [
+                          "price"
+                        ]
+                      },
+                      "text_direct": "US $1,229.49",
+                      "get_text": "US $1,229.49",
+                      "children": []
+                    },
+                    {
+                      "name": "div",
+                      "attrs": {
+                        "class": [
+                          "rating"
+                        ]
+                      },
+                      "text_direct": "",
+                      "get_text": "5.0",
+                      "children": [
+                        {
+                          "name": "span",
+                          "attrs": {
+                            "class": [
+                              "value"
+                            ]
+                          },
+                          "text_direct": "5.0",
+                          "get_text": "5.0",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "div",
+                      "attrs": {
+                        "class": [
+                          "note"
+                        ]
+                      },
+                      "text_direct": "See details",
+                      "get_text": "See details",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "h1",
+      "span",
+      "div",
+      "span",
+      "div"
+    ]
+  },
+  "WALMART_1": {
+    "raw": "<div class='price'>$8.95</div>",
+    "normalized": "<div class='price'>$8.95</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "$8.95",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "$8.95",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "$8.95",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "class": [
+                      "price"
+                    ]
+                  },
+                  "text_direct": "$8.95",
+                  "get_text": "$8.95",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div"
+    ]
+  },
+  "WALMART_2": {
+    "raw": "<div class='price'>$7.00</div>",
+    "normalized": "<div class='price'>$7.00</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "$7.00",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "$7.00",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "$7.00",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {
+                    "class": [
+                      "price"
+                    ]
+                  },
+                  "text_direct": "$7.00",
+                  "get_text": "$7.00",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div"
+    ]
+  },
+  "ETSY_1": {
+    "raw": "<span class='amount'>$12.50+</span>",
+    "normalized": "<span class='amount'>$12.50+</span>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "$12.50+",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "$12.50+",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "$12.50+",
+              "children": [
+                {
+                  "name": "span",
+                  "attrs": {
+                    "class": [
+                      "amount"
+                    ]
+                  },
+                  "text_direct": "$12.50+",
+                  "get_text": "$12.50+",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "span"
+    ]
+  },
+  "ETSY_2": {
+    "raw": "<span class='amount'>$60.00</span>",
+    "normalized": "<span class='amount'>$60.00</span>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "$60.00",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "$60.00",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "$60.00",
+              "children": [
+                {
+                  "name": "span",
+                  "attrs": {
+                    "class": [
+                      "amount"
+                    ]
+                  },
+                  "text_direct": "$60.00",
+                  "get_text": "$60.00",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "span"
+    ]
+  },
+  "BTN_BASE": {
+    "raw": "<div><a class=\"btn-primary\" href=\"/item\">Buy</a></div>",
+    "normalized": "<div><a class=\"btn-primary\" href=\"/item\">Buy</a></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "Buy",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "Buy",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "Buy",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "Buy",
+                  "children": [
+                    {
+                      "name": "a",
+                      "attrs": {
+                        "class": [
+                          "btn-primary"
+                        ],
+                        "href": "/item"
+                      },
+                      "text_direct": "Buy",
+                      "get_text": "Buy",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "a"
+    ]
+  },
+  "BTN_VARIANT": {
+    "raw": "<div><a class=\"btn-prime\" href=\"/item\">Buy</a></div>",
+    "normalized": "<div><a class=\"btn-prime\" href=\"/item\">Buy</a></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "Buy",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "Buy",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "Buy",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "Buy",
+                  "children": [
+                    {
+                      "name": "a",
+                      "attrs": {
+                        "class": [
+                          "btn-prime"
+                        ],
+                        "href": "/item"
+                      },
+                      "text_direct": "Buy",
+                      "get_text": "Buy",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "a"
+    ]
+  },
+  "BTN_BASE2": {
+    "raw": "<div><a class='btn-primary-action' href='/buy'>Buy</a></div>",
+    "normalized": "<div><a class='btn-primary-action' href='/buy'>Buy</a></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "Buy",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "Buy",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "Buy",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "Buy",
+                  "children": [
+                    {
+                      "name": "a",
+                      "attrs": {
+                        "class": [
+                          "btn-primary-action"
+                        ],
+                        "href": "/buy"
+                      },
+                      "text_direct": "Buy",
+                      "get_text": "Buy",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "a"
+    ]
+  },
+  "BTN_VARIANT2": {
+    "raw": "<div><a class='btn-prim-action' href='/buy'>Buy</a></div>",
+    "normalized": "<div><a class='btn-prim-action' href='/buy'>Buy</a></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "Buy",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "Buy",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "Buy",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "Buy",
+                  "children": [
+                    {
+                      "name": "a",
+                      "attrs": {
+                        "class": [
+                          "btn-prim-action"
+                        ],
+                        "href": "/buy"
+                      },
+                      "text_direct": "Buy",
+                      "get_text": "Buy",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "a"
+    ]
+  },
+  "ONE_LI": {
+    "raw": "<ul><li>Banana</li></ul>",
+    "normalized": "<ul><li>Banana</li></ul>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "Banana",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "Banana",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "Banana",
+              "children": [
+                {
+                  "name": "ul",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "Banana",
+                  "children": [
+                    {
+                      "name": "li",
+                      "attrs": {},
+                      "text_direct": "Banana",
+                      "get_text": "Banana",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "ul",
+      "li"
+    ]
+  },
+  "MALFORMED_P": {
+    "raw": "<div><p>one<p>two</div>",
+    "normalized": "<div><p>one<p>two</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "onetwo",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "onetwo",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "onetwo",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "onetwo",
+                  "children": [
+                    {
+                      "name": "p",
+                      "attrs": {},
+                      "text_direct": "one",
+                      "get_text": "one",
+                      "children": []
+                    },
+                    {
+                      "name": "p",
+                      "attrs": {},
+                      "text_direct": "two",
+                      "get_text": "two",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "p",
+      "p"
+    ]
+  },
+  "MALFORMED_TABLE": {
+    "raw": "<table><tr><td>cell</td></tr></table>",
+    "normalized": "<table><tr><td>cell</td></tr></table>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "cell",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "cell",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "cell",
+              "children": [
+                {
+                  "name": "table",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "cell",
+                  "children": [
+                    {
+                      "name": "tr",
+                      "attrs": {},
+                      "text_direct": "",
+                      "get_text": "cell",
+                      "children": [
+                        {
+                          "name": "td",
+                          "attrs": {},
+                          "text_direct": "cell",
+                          "get_text": "cell",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "table",
+      "tr",
+      "td"
+    ]
+  },
+  "MALFORMED_UNCLOSED": {
+    "raw": "<div><span>a<div>b</div>",
+    "normalized": "<div><span>a<div>b</div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "ab",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "ab",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "ab",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "ab",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {},
+                      "text_direct": "a",
+                      "get_text": "ab",
+                      "children": [
+                        {
+                          "name": "div",
+                          "attrs": {},
+                          "text_direct": "b",
+                          "get_text": "b",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span",
+      "div"
+    ]
+  },
+  "COMMENT": {
+    "raw": "<div><!-- note --><span>x</span></div>",
+    "normalized": "<div><!-- note --><span>x</span></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "x",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "x",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "x",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": " note ",
+                  "get_text": "x",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {},
+                      "text_direct": "x",
+                      "get_text": "x",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span"
+    ]
+  },
+  "MULTI_CLASS": {
+    "raw": "<div><span class='a b  c'>hit</span></div>",
+    "normalized": "<div><span class='a b  c'>hit</span></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "hit",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "hit",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "hit",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "hit",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {
+                        "class": [
+                          "a",
+                          "b",
+                          "c"
+                        ]
+                      },
+                      "text_direct": "hit",
+                      "get_text": "hit",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span"
+    ]
+  },
+  "ENTITY": {
+    "raw": "<div><span>caf&eacute; &amp; bar</span></div>",
+    "normalized": "<div><span>café & bar</span></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "café & bar",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "café & bar",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "café & bar",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "café & bar",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {},
+                      "text_direct": "café & bar",
+                      "get_text": "café & bar",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span"
+    ]
+  },
+  "NESTED_SAME": {
+    "raw": "<div><div><div>deep</div></div></div>",
+    "normalized": "<div><div><div>deep</div></div></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "deep",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "deep",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "deep",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "deep",
+                  "children": [
+                    {
+                      "name": "div",
+                      "attrs": {},
+                      "text_direct": "",
+                      "get_text": "deep",
+                      "children": [
+                        {
+                          "name": "div",
+                          "attrs": {},
+                          "text_direct": "deep",
+                          "get_text": "deep",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "div",
+      "div"
+    ]
+  },
+  "STYLE_ATTR": {
+    "raw": "<div><span style='color:red' class='x'>styled</span></div>",
+    "normalized": "<div><span style='color:red' class='x'>styled</span></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "styled",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "styled",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "styled",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "styled",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {
+                        "style": "color:red",
+                        "class": [
+                          "x"
+                        ]
+                      },
+                      "text_direct": "styled",
+                      "get_text": "styled",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span"
+    ]
+  },
+  "EMPTY_CLASS": {
+    "raw": "<div><span class=''>ec</span></div>",
+    "normalized": "<div><span class=''>ec</span></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "ec",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "ec",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "ec",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "ec",
+                  "children": [
+                    {
+                      "name": "span",
+                      "attrs": {
+                        "class": []
+                      },
+                      "text_direct": "ec",
+                      "get_text": "ec",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "span"
+    ]
+  },
+  "SRC_ATTR": {
+    "raw": "<div><img src='/img/a.png'/></div>",
+    "normalized": "<div><img src='/img/a.png'/></div>",
+    "tree": {
+      "name": "[document]",
+      "attrs": {},
+      "text_direct": "",
+      "get_text": "",
+      "children": [
+        {
+          "name": "html",
+          "attrs": {},
+          "text_direct": "",
+          "get_text": "",
+          "children": [
+            {
+              "name": "body",
+              "attrs": {},
+              "text_direct": "",
+              "get_text": "",
+              "children": [
+                {
+                  "name": "div",
+                  "attrs": {},
+                  "text_direct": "",
+                  "get_text": "",
+                  "children": [
+                    {
+                      "name": "img",
+                      "attrs": {
+                        "src": "/img/a.png"
+                      },
+                      "text_direct": "",
+                      "get_text": "",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "descendant_order": [
+      "html",
+      "body",
+      "div",
+      "img"
+    ]
+  }
+}

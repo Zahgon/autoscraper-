@@ -1,0 +1,30 @@
+# input	output
+&amp;	&
+&amp	&
+&AMP;	&
+&AMP	&
+&lt;&gt;	<>
+&notit;	¬it;
+&not;	¬
+&#65;	A
+&#x41;	A
+&#X41;	A
+&#0;	�
+&#xD;	\r
+&#x1F600;	😀
+&#1114112;	�
+plain text	plain text
+a &amp;&amp; b	a && b
+&nbsp;	 
+&eacute;	é
+&copy	©
+&#38;amp;	&amp;
+&&amp;&	&&&
+&unknownentity;	&unknownentity;
+&#;	&#;
+&#x;	&#x;
+&	&
+caf&eacute; &amp; bar	café & bar
+&Eacute;&eacute;	Éé
+&thinsp;&ensp;	  
+&lt;script&gt;alert(1)&lt;/script&gt;	<script>alert(1)</script>
